@@ -9,12 +9,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Process", href: "/#process" },
+  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 function ThemeToggle() {
@@ -56,35 +58,23 @@ export function NavBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 font-bold text-lg text-foreground">
+          <a href="/" className="flex items-center gap-2 font-bold text-lg text-foreground">
             <ShieldCheck className="h-6 w-6 text-primary" />
             <span>Satlinkgy</span>
           </a>
-
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-5">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
+              <a key={link.href} href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 {link.label}
               </a>
             ))}
           </div>
-
-          {/* Desktop right */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <ThemeToggle />
-            <Button asChild size="sm">
-              <a href="#contact">Get a Quote</a>
-            </Button>
+            <Button asChild size="sm"><a href="/quote">Get a Quote</a></Button>
           </div>
-
-          {/* Mobile */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <ThemeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -93,32 +83,21 @@ export function NavBar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-72">
-                <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-col gap-6 mt-8"
-                >
-                  <a href="#" className="flex items-center gap-2 font-bold text-lg">
-                    <ShieldCheck className="h-5 w-5 text-primary" />
-                    Satlinkgy
+                <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }} className="flex flex-col gap-6 mt-8">
+                  <a href="/" className="flex items-center gap-2 font-bold text-lg">
+                    <ShieldCheck className="h-5 w-5 text-primary" />Satlinkgy
                   </a>
                   <nav className="flex flex-col gap-4">
                     {navLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className="text-base text-muted-foreground hover:text-foreground transition-colors"
-                      >
+                      <a key={link.href} href={link.href} onClick={() => setOpen(false)}
+                        className="text-base text-muted-foreground hover:text-foreground transition-colors">
                         {link.label}
                       </a>
                     ))}
                   </nav>
                   <Button asChild className="mt-2">
-                    <a href="#contact" onClick={() => setOpen(false)}>
-                      Get a Quote
-                    </a>
+                    <a href="/quote" onClick={() => setOpen(false)}>Get a Quote</a>
                   </Button>
                 </motion.div>
               </SheetContent>
