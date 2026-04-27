@@ -124,7 +124,7 @@ export function Footer() {
 
           <div className="border-t border-border pt-8 text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 Satlinkgy. All rights reserved.
+              © 2026 Satlinkgy. All rights reserved.
             </p>
           </div>
         </div>
