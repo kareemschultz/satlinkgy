@@ -47,10 +47,28 @@ export function ContactSection() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setIsSubmitting(false);
-    toast.success("Message sent! We'll be in touch within 24 hours.");
-    setForm(emptyForm);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${siteConfig.formspreeId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent! We'll be in touch within 24 hours.");
+        setForm(emptyForm);
+      } else {
+        toast.error("Oops! There was a problem sending your message.");
+      }
+    } catch (error) {
+      toast.error("Error sending message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (

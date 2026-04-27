@@ -16,6 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import { services } from "@/lib/data";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const iconMap: Record<string, ElementType> = {
   Wifi,
@@ -86,6 +88,13 @@ export function ServicesSection() {
                           </li>
                         ))}
                       </ul>
+                      <Link
+                        href={`/services/${service.id}`}
+                        className="inline-flex items-center text-sm font-medium text-primary mt-6 group/link"
+                      >
+                        Learn More
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
                     </CardContent>
                   </Card>
                 </motion.div>

@@ -51,7 +51,6 @@ export function ProjectsSection() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      disabled
                       className="self-start mt-2 text-white/70 hover:text-white p-0 h-auto"
                     >
                       View Project →

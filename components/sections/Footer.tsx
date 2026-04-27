@@ -89,21 +89,27 @@ export function Footer() {
               {/* Social */}
               <div className="flex items-center gap-3 mt-6">
                 <a
-                  href="#"
+                  href={siteConfig.links.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Facebook"
                   className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors"
                 >
                   <Facebook className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href={siteConfig.links.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors"
                 >
                   <Instagram className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href={siteConfig.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors"
                 >

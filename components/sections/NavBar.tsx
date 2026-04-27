@@ -7,14 +7,15 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Resources", href: "/resources" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 function ThemeToggle() {
@@ -57,21 +58,21 @@ export function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 font-bold text-lg text-foreground">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg text-foreground">
             <ShieldCheck className="h-6 w-6 text-primary" />
             <span>Satlinkgy</span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -79,7 +80,7 @@ export function NavBar() {
           <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
             <Button asChild size="sm">
-              <a href="#contact">Get a Quote</a>
+              <Link href="/quote">Get a Quote</Link>
             </Button>
           </div>
 
@@ -99,26 +100,26 @@ export function NavBar() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6 mt-8"
                 >
-                  <a href="#" className="flex items-center gap-2 font-bold text-lg">
+                  <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2 font-bold text-lg">
                     <ShieldCheck className="h-5 w-5 text-primary" />
                     Satlinkgy
-                  </a>
+                  </Link>
                   <nav className="flex flex-col gap-4">
                     {navLinks.map((link) => (
-                      <a
+                      <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
                         className="text-base text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                   <Button asChild className="mt-2">
-                    <a href="#contact" onClick={() => setOpen(false)}>
+                    <Link href="/quote" onClick={() => setOpen(false)}>
                       Get a Quote
-                    </a>
+                    </Link>
                   </Button>
                 </motion.div>
               </SheetContent>
